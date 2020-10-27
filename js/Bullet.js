@@ -83,11 +83,21 @@
 			}
 			game.ctx.save();
 			game.ctx.translate(this.x,this.y);
-			if(this.type == "brect")
-				game.ctx.drawImage(game.sprite,1280,715,138,16,-15,-15,10,10);
-			else if(this.type == "prect")
-			game.ctx.drawImage(game.sprite,1280,540,138,16,-15,-15,10,10);	
-			else game.ctx.drawImage(game.sprite,962,717,138,16,-15,-15,10,10);	
+			if(this.type == "brect"){
+				// game.ctx.drawImage(game.sprite,1280,715,138,16,-15,-15,10,10);
+				game.ctx.fillStyle = "yellow";
+				game.ctx.fillRect(-15,-15,15,15);
+			}
+			else if(this.type == "prect"){
+				game.ctx.fillStyle = "yellow";
+				game.ctx.fillRect(-15,-15,15,15);
+			// game.ctx.drawImage(game.sprite,1280,540,138,16,-15,-15,10,10);	
+			}
+			else {
+				game.ctx.fillStyle = "yellow";
+				game.ctx.fillRect(-15,-15,15,15);
+				// game.ctx.drawImage(game.sprite,962,717,138,16,-15,-15,10,10);	
+			}
 		
 			game.ctx.restore();
 		}

@@ -17,7 +17,12 @@
 	};
 	//绘制图像
 	Enemy.prototype.render = function(){
-		game.ctx.drawImage(game.sprite,320,720,160,180,this.x-30,this.y-30,this.width,this.height);
+		// game.ctx.drawImage(game.sprite,320,720,160,180,this.x-30,this.y-30,this.width,this.height);
+		game.ctx.beginPath();
+        game.ctx.rect(this.x-30, this.y-30, 30, 30);
+        game.ctx.fillStyle = "#0095DD";
+        game.ctx.fill();
+        game.ctx.closePath();
 		// if(this.type == "type1"){
 		// 	game.ctx.drawImage(game.sprite,320,720,160,180,this.x-30,this.y-30,this.width,this.height);
 		// }

@@ -42,9 +42,9 @@
 		this.ctx.strokeRect(426,18,169,201);//生命值边框
 		this.ctx.fillText("LIFE",440,50);
 		
-		// for(var i = 0; i < this.player.life; i++){
-		// 	this.ctx.drawImage(this.sprite,636,720,160,180,430+i*30,55,45,45);
-		// }
+		for(var i = 0; i < this.player.life; i++){
+			this.ctx.drawImage(this.sprite,636,720,160,180,430+i*30,55,45,45);
+		}
 
 		this.ctx.fillText("东方Underground",420,340);
 		this.ctx.font = "18px Arial";
@@ -72,11 +72,11 @@
 			this.offset = this.offset < this.iCanvasHeight ? this.offset+2 : 0 ;
 			this.ctx.drawImage(this.sprite,636,0,613,416,0,this.offset,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
 			this.ctx.drawImage(this.sprite,636,0,613,416,0,this.offset-this.iCanvasHeight,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
-			if(this.bossstate){
-				this.offset = this.offset < this.iCanvasHeight ? this.offset+2 : 0 ;
-			this.ctx.drawImage(this.sprite,1280,0,613,416,0,this.offset,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
-			this.ctx.drawImage(this.sprite,1280,0,613,416,0,this.offset-this.iCanvasHeight,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
-			}
+			// if(this.bossstate){
+			// 	this.offset = this.offset < this.iCanvasHeight ? this.offset+2 : 0 ;
+			// this.ctx.drawImage(this.sprite,1280,0,613,416,0,this.offset,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
+			// this.ctx.drawImage(this.sprite,1280,0,613,416,0,this.offset-this.iCanvasHeight,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
+			// }
 		}	
 		else if(this.state == "结束"){
 			this.reset(); //重新开始 但是没有显示分数什么的
