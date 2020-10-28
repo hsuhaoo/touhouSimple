@@ -70,8 +70,6 @@
 		}
 		else if(this.type == "light"){
 			game.ctx.save(); 
-			console.log(this.x);
-			console.log(this.y);
 			game.ctx.translate(this.x,this.y);
 			game.ctx.rotate(this.angle + Math.PI/2);
 			game.ctx.drawImage(game.sprite,1280,900,138,16,10,10,10,200);
@@ -83,21 +81,8 @@
 			}
 			game.ctx.save();
 			game.ctx.translate(this.x,this.y);
-			if(this.type == "brect"){
-				// game.ctx.drawImage(game.sprite,1280,715,138,16,-15,-15,10,10);
-				game.ctx.fillStyle = "yellow";
-				game.ctx.fillRect(-15,-15,15,15);
-			}
-			else if(this.type == "prect"){
-				game.ctx.fillStyle = "yellow";
-				game.ctx.fillRect(-15,-15,15,15);
-			// game.ctx.drawImage(game.sprite,1280,540,138,16,-15,-15,10,10);	
-			}
-			else {
-				game.ctx.fillStyle = "yellow";
-				game.ctx.fillRect(-15,-15,15,15);
-				// game.ctx.drawImage(game.sprite,962,717,138,16,-15,-15,10,10);	
-			}
+			game.ctx.fillStyle = "yellow";
+			game.ctx.fillRect(0,0,15,15);
 		
 			game.ctx.restore();
 		}
@@ -121,7 +106,7 @@
 		// 		game.deletePlayerBullet(this);
 		// 	}
 		// }
-		else if(this.x<-15||this.x>game.iCanvasWidth||this.y<-15||this.y>game.iCanvasHeight+15){
+		else if(this.x<-15||this.x>game.iCanvasWidth-15||this.y<-15||this.y>game.iCanvasHeight+15){
 					game.deleteEnemyBullet(this);
 		}
 		//子弹的判定 角色和子弹的距离
