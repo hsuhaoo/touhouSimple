@@ -10,6 +10,9 @@
 		"type3":{
 			"step":2
 		},
+		"type6":{
+			"step":5
+		},
 		"brect":{
 			"color":1,
 			"step":2,
@@ -91,22 +94,23 @@
 	Bullet.prototype.update=function(){
 		this.x += this.step*Math.cos(this.angle);
 		this.y += this.step*Math.sin(this.angle);
+
 		
  		//小激光扫射激光
-		if(this.type =="light"){
-			this.angle+=this.dj;
-			if(Math.abs(this.angle-this.startangle)>0.4){
-				game.deleteEnemyBullet(this); //控制激光持续时间
-				return;
-			}
-		}
+		// if(this.type =="light"){
+		// 	this.angle+=this.dj;
+		// 	if(Math.abs(this.angle-this.startangle)>0.4){
+		// 		game.deleteEnemyBullet(this); //控制激光持续时间
+		// 		return;
+		// 	}
+		// }
 		//当子弹超出范围时 清除子弹 避免数组爆炸
 		// if(this.type=="player"){
 		// 	if(this.y<0){
 		// 		game.deletePlayerBullet(this);
 		// 	}
 		// }
-		else if(this.x<-15||this.x>game.iCanvasWidth-15||this.y<-15||this.y>game.iCanvasHeight+15){
+		if(this.x<-15||this.x>game.iCanvasWidth-15||this.y<-15||this.y>game.iCanvasHeight-15){
 					game.deleteEnemyBullet(this);
 		}
 		//子弹的判定 角色和子弹的距离

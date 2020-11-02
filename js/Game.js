@@ -67,6 +67,16 @@
 			this.ctx.fillText("普通",184,159);
 			this.ctx.fillStyle = this.level==3?"yellow":"black";
 			this.ctx.fillText("困难",184,209);
+			this.ctx.fillStyle = this.level==4?"yellow":"black";
+			this.ctx.fillText("困难",184,259);
+			this.ctx.fillStyle = this.level==5?"yellow":"black";
+			this.ctx.fillText("困难",184,309);
+			this.ctx.fillStyle = this.level==6?"yellow":"black";
+			this.ctx.fillText("困难",184,359);
+			this.ctx.fillStyle = this.level==7?"yellow":"black";
+			this.ctx.fillText("困难",184,409);
+			this.ctx.fillStyle = this.level==8?"yellow":"black";
+			this.ctx.fillText("困难",184,459);
 		}
 		else if(this.state == "游戏中"){
 			this.offset = this.offset < this.iCanvasHeight ? this.offset+2 : 0 ;
@@ -89,12 +99,12 @@
 				if(event.keyCode == 38){ //上方向键
 					this.level -= 1; //默认难度为1
 					if(this.level < 1){
-						this.level = 3; 
+						this.level = 8; 
 					}
 				}
 				else if(event.keyCode == 40){//下方向键
 						this.level += 1; 
-						if(this.level > 3){
+						if(this.level > 8){
 							this.level = 1;
 						}
 					}
@@ -187,7 +197,7 @@
 	Game.prototype.progress=function(){
 		//敌人1
 		if(this.f == 10)
-			var enemy1 = new Enemy(game.iCanvasWidth/(2*game.level+1), 100, "type4");
+			var enemy1 = new Enemy(game.iCanvasWidth/2-30, 100, "type0");
 			
 		// //敌人2	
 		// if(this.f == 480)
