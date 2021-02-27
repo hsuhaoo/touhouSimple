@@ -28,7 +28,6 @@
 	//2. 函数定义块...........................................................
 	Game.prototype.run = function(){
 		var self = this;
-		// this.player=new Player();
 		this.updatePane();
 		this.bindEvent();
 		this.timer=requestAnimationFrame(this.mainLoop.bind(this));
@@ -39,16 +38,10 @@
 		this.ctx.font = "23px Arial";
 		this.ctx.fillStyle = "black";
 		this.ctx.strokeRect(408,0,613,438);//外边框
-		this.ctx.strokeRect(426,18,169,201);//生命值边框
-		this.ctx.fillText("LIFE",440,50);
-		
-		for(var i = 0; i < this.player.life; i++){
-			this.ctx.drawImage(this.sprite,636,720,160,180,430+i*30,55,45,45);
-		}
 
-		this.ctx.fillText("东方Underground",420,340);
+		this.ctx.fillText("弹幕算法demo",420,340);
 		this.ctx.font = "18px Arial";
-		this.ctx.fillText("操作说明：",440,120);
+		this.ctx.fillText("操作说明：",440,100);
 		this.ctx.fillText("←↑→↓  移动",440,150);
 		this.ctx.fillText("Z  射击",440,180);
 		this.ctx.fillText("Enter  进入",440,210);
@@ -62,31 +55,26 @@
 			this.ctx.drawImage(this.sprite,0,0,613,438,0,0,613,438);
 			this.updatePane();
 			this.ctx.fillStyle = this.level==1?"yellow":"black";
-			this.ctx.fillText("简单",184,109);
+			this.ctx.fillText("散弹",184,59);
 			this.ctx.fillStyle = this.level==2?"yellow":"black";
-			this.ctx.fillText("普通",184,159);
+			this.ctx.fillText("圆形散射",184,109);
 			this.ctx.fillStyle = this.level==3?"yellow":"black";
-			this.ctx.fillText("困难",184,209);
+			this.ctx.fillText("自机狙",184,159);
 			this.ctx.fillStyle = this.level==4?"yellow":"black";
-			this.ctx.fillText("困难",184,259);
+			this.ctx.fillText("弧形",184,209);
 			this.ctx.fillStyle = this.level==5?"yellow":"black";
-			this.ctx.fillText("困难",184,309);
+			this.ctx.fillText("旋转弧形",184,259);
 			this.ctx.fillStyle = this.level==6?"yellow":"black";
-			this.ctx.fillText("困难",184,359);
+			this.ctx.fillText("旋转花形",184,309);
 			this.ctx.fillStyle = this.level==7?"yellow":"black";
-			this.ctx.fillText("困难",184,409);
+			this.ctx.fillText("密集型",184,359);
 			this.ctx.fillStyle = this.level==8?"yellow":"black";
-			this.ctx.fillText("困难",184,459);
+			this.ctx.fillText("距离改变密集型",184,409);
 		}
 		else if(this.state == "游戏中"){
 			this.offset = this.offset < this.iCanvasHeight ? this.offset+2 : 0 ;
 			this.ctx.drawImage(this.sprite,636,0,613,416,0,this.offset,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
 			this.ctx.drawImage(this.sprite,636,0,613,416,0,this.offset-this.iCanvasHeight,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
-			// if(this.bossstate){
-			// 	this.offset = this.offset < this.iCanvasHeight ? this.offset+2 : 0 ;
-			// this.ctx.drawImage(this.sprite,1280,0,613,416,0,this.offset,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
-			// this.ctx.drawImage(this.sprite,1280,0,613,416,0,this.offset-this.iCanvasHeight,this.iCanvasWidth,this.iCanvasHeight);//游戏界面
-			// }
 		}	
 		else if(this.state == "结束"){
 			this.reset(); //重新开始 但是没有显示分数什么的
@@ -110,6 +98,7 @@
 					}
 				else if(event.keyCode == 13){ //enter键
 						this.state="游戏中";
+						this.progress();//生成敌人
 					}
 			}
 			else if(this.state == "游戏中"){
@@ -127,6 +116,9 @@
 					}
 					if(event.keyCode==90){ //z 射击左右两个分散子弹
 						this.controlZ=1;
+					}
+					if(event.keyCode==27){
+						this.state = "结束";
 					}
 			}
 		}.bind(this);
@@ -157,8 +149,7 @@
 		if(this.state == "开始界面") 
 			this.drawStage();//场景一选关背景
 		else{
-			//game.bgmEnemy.play();
-	        //game.bgmBoss.pause();
+
 			this.drawStage();//场景二敌人背景
 			this.f++;//控制敌人出现时间
 
@@ -168,12 +159,7 @@
 			this.controlD && this.player.goDown();
 
 			this.player.render();//生成角色
-			this.progress();//生成敌人
 
-			// for(var i=0;i<this.playerBullets.length;i++){
-			// 		this.playerBullets[i].update();
-			// 		this.playerBullets[i] && game.playerBullets[i].render();
-			// }
 
 		 	for(var i=0;i<this.enemyBullets.length;i++){
 					this.enemyBullets[i].update();
@@ -185,19 +171,13 @@
 					this.enemys[i] && game.enemys[i].render();
 			}
 
-			// if(this.boss){
-			
-			// 	this.boss.update();
-			// 	this.boss&&this.boss.render();
-					
-			// }	
 		}
 	};
 	//生成敌人函数
 	Game.prototype.progress=function(){
 		//敌人1
-		if(this.f == 10)
-			var enemy1 = new Enemy(game.iCanvasWidth/2-30, 100, "type0");
+		// if(this.f == 10)
+		var enemy1 = new Enemy(game.iCanvasWidth/2-30, 100, this.level);
 			
 		// //敌人2	
 		// if(this.f == 480)

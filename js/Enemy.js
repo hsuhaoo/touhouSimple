@@ -39,32 +39,32 @@
 	//根据Game.progress传入的敌人类型 选择对应的攻击子弹
 	Enemy.prototype.update = function(){
 		this.f++;
-		if(this.type == "type0"){ //圆形散射
+		if(this.type == 1){ //圆形散射
 			if(game.f%20 == 0)
 			// new Bullet(this.x,this.y,0,"type1");//子弹开始的范围 
 			for(var i=0; i<3; i++){ 
 				new Bullet(this.x,this.y,(3+i)*Math.PI/8,"type1");//子弹开始的范围 
 			}		
 		}
-		if(this.type == "type1"){ //圆形散射
+		if(this.type == 2){ //圆形散射
 			if(game.f%20 == 0)
 				for(var i=0; i<10; i++){ 
 					new Bullet(this.x,this.y,i*2*Math.PI/10,"type1");//子弹开始的范围 
 				}		
 		}
 
- 		if(this.type == "type2"){ //自狙击
+ 		if(this.type == 3){ //自狙击
  			if(game.f%20 == 0)
  					new Bullet(this.x,this.y,Math.atan2(game.player.y-this.y,game.player.x-this.x),"type1");
  		}
- 		if(this.type == "type3"){ //弧形
+ 		if(this.type == 4){ //弧形
  			if(game.f%5==0){
  				this.angle+=20;//控制子弹的间距
  				new Bullet(this.x, this.y,this.angle*Math.PI/180,"type1");
  			}		
  		}
 
-		if(this.type == "type4"){ 
+		if(this.type == 5){ 
 			// //形态一旋转弧形组
 			this.angle -= 0.1;
 			var dt = 10;//根据难度可以再修改 可以放定义里
@@ -77,7 +77,7 @@
 		}
 
 			// //形态二旋转花形
-		if(this.type == "type5"){
+		if(this.type == 6){
 			// if(this.f == 850) this.angle =0;
 			// if(this.f >= 900 && this.f <= 1700){
 			this.angle -= 0.005;
@@ -90,7 +90,7 @@
 			}	
 		}
 
-		if(this.type == "type6"){ //密集型
+		if(this.type == 7){ //密集型
 
 			var offsetx = [];
 			var offsety = [];
@@ -110,7 +110,7 @@
 				}
 			}		
 		}
-		if(this.type == "type7"){ //距离改变密集型
+		if(this.type == 8){ //距离改变密集型
 
 			if(game.f == 20)
 				for(var i=0; i<10; i++){
