@@ -176,34 +176,10 @@
 	//生成敌人函数
 	Game.prototype.progress=function(){
 		//敌人1
-		// if(this.f == 10)
 		var enemy1 = new Enemy(game.iCanvasWidth/2-30, 100, this.level);
 			
-		// //敌人2	
-		// if(this.f == 480)
-		// 	for(var i = 0; i < game.level * 2; i++){
-		// 		var enemy2 = new Enemy(game.iCanvasWidth / (2*game.level +1)*(i+1),100,"type2");
-		// 	}
-		// //敌人3
-		// if(this.f == 780)
-		// 	for(var i = 0; i < game.level *2;i++){
-		// 		var enemy3 = new Enemy(game.iCanvasWidth /(2*game.level +1)*(i+1),100,"type3" );
-		// 	}
-		// //Boss
-		// if(this.f == 1000){
-		// 	game.bossstate = true;
-		// 	game.offset = 0;
-		// 	game.bgmEnemy.pause();
-		// 	game.bgmBoss.play();
-		// 	game.boss = new Boss(194,150,"Boss");			 
-		// }
 	};
-	//清除角色子弹 避免子弹绘制到右侧的信息面板
-	// Game.prototype.deletePlayerBullet=function(o){
-	// 	for(var i = this.playerBullets.length; i >= 0; i--){
-	// 			this.playerBullets.splice(i,1)
-	// 	}
-	// };
+
 	//清除敌人子弹
 	Game.prototype.deleteEnemyBullet=function(o){
 		for(var i=this.enemyBullets.length;i>=0;i--){
@@ -212,19 +188,11 @@
 			 }
 		}
 	};
-	//清除敌人 敌人被子弹射中时清除敌人
-	// Game.prototype.deleteEnemy=function(o){
-	// 	for(var i=this.enemys.length;i>=0;i--){
-	// 		if(this.enemys[i]===o){
-	// 			this.enemys.splice(i,1)
-	// 		}
-	// 	}
-	// };
+
 	//游戏重置
 	Game.prototype.reset=function(){
 		this.iCanvasWidth = 408;
 		this.iCanvasHeight = 438;
-		// this.player = new Player();
 		this.state = "开始界面";
 		this.f = 0,
 		this.level = 1,
@@ -234,8 +202,6 @@
 		this.playerBullets=[],
 		this.enemys=[],
 		this.enemyBullets=[];
-		// this.bgmEnemy.play();
-		// this.bgmBoss.pause();
 
 		this.controlL=0; //键盘事件默认false 0
 		this.controlR=0;
@@ -252,10 +218,7 @@
 Game.prototype.start = function(){
 	this.sprite = new Image();
 	this.sprite.src = "images/sprite.png";
-	// this.bgmEnemy = document.getElementById('bgmEnemy');
-	// this.bgmBoss = document.getElementById('bgmBoss');
-	// this.bgmEnemy.play();
-	// this.bgmBoss.pause();
+
 	this.sprite.onload = function(e){ 
 		game.run();//游戏运行
 	}

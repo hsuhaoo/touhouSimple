@@ -12,12 +12,12 @@
 	};
 	//绘制图像
 	Player.prototype.render = function(){
-		// this.ctx.drawImage(game.sprite,664,584,136,136,this.x,this.y,this.width,this.height);
-		ctx.beginPath();
-        ctx.arc(this.x,this.y, 10, 0, Math.PI*2);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+		this.ctx.drawImage(game.sprite,664,584,136,136,this.x,this.y,this.width,this.height);
+		// ctx.beginPath();
+        // ctx.arc(this.x,this.y, 10, 0, Math.PI*2);
+        // ctx.fillStyle = "#0095DD";
+        // ctx.fill();
+        // ctx.closePath();
 		game.controlZ == 1 && new Bullet(this.x, this.y-10, -Math.PI/2,"player");
 	};
 	//键盘事件——左

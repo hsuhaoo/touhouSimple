@@ -9,9 +9,7 @@
 		this.height = 50;
 		this.step = 20;
 		this.type = type;
-		// if(this.type == "type3"){
-			this.angle = 0;
-		// }
+		this.angle = 0;
 		this.f = 0; 
 		game.enemys.push(this);
 		this.offsetx = [];
@@ -19,12 +17,13 @@
 	};
 	//绘制图像
 	Enemy.prototype.render = function(){
+		game.ctx.drawImage(game.sprite,0,540,160,180,this.x-15,this.y-30,this.width,this.height);
 		// game.ctx.drawImage(game.sprite,320,720,160,180,this.x-30,this.y-30,this.width,this.height);
-		game.ctx.beginPath();
-        game.ctx.rect(this.x-7.5, this.y, 30, 30);
-        game.ctx.fillStyle = "#0095DD";
-        game.ctx.fill();
-        game.ctx.closePath();
+		// game.ctx.beginPath();
+        // game.ctx.rect(this.x-7.5, this.y, 30, 30);
+        // game.ctx.fillStyle = "#0095DD";
+        // game.ctx.fill();
+        // game.ctx.closePath();
 		// if(this.type == "type1"){
 		// 	game.ctx.drawImage(game.sprite,320,720,160,180,this.x-30,this.y-30,this.width,this.height);
 		// }
@@ -78,8 +77,7 @@
 
 			// //形态二旋转花形
 		if(this.type == 6){
-			// if(this.f == 850) this.angle =0;
-			// if(this.f >= 900 && this.f <= 1700){
+
 			this.angle -= 0.005;
 			var dt  = 10;
 			for(var i=0;i<12.56;i+=2.52){ //和形态一一样 反向也搞了一个
@@ -131,32 +129,6 @@
 			}		
 		}
 
-			//形态三
-			// if(this.f >= 1750 && this.f <= 2550){ 
-			// if(this.f >= 0 && this.f <= 800){
-			// 	var dt = 10;
-			// 	//花形状 可以延长形态二的时间 形态三加个激光就行了 少写一些代码
-			// 	this.angle -= 0.005;var dt  = 10;
-			// 	for(var i=0;i<6.28;i+=1.26){ 	//和形态一一样 反向也搞了一个
-			// 		this.f%dt == 0 && this.f%(dt*2)!=0 &&
-			// 		new Bullet(this.x,this.y,this.angle+i,"brect");
-			// 		this.f%dt == 0 && this.f%(dt*2)!=0 &&
-			// 		new Bullet(this.x,this.y,-this.angle+i,"brect");
-			// 	}
-			// 	//激光
-			// 	if((this.f >=100 && this.f <=600)||(this.f >=2250 && this.f <=2550) ){
-			// 		if(this.f%100==0 && this.f%200!=0){
-			// 				var lightangle = 45;//避免画到右侧数据面板
-			// 				for(var i=0;i<6.28;i+=1.26){
-			// 					new Bullet(this.x+10*Math.cos(lightangle+i),
-			// 						this.y+10*Math.sin(lightangle+i),
-			// 						lightangle+0.5+i,"light");	
-
-			// 				}
-			// 		}
-			// 	}
-			// }
-		// }
 	};
 })();
 
